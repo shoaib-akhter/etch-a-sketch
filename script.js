@@ -2,9 +2,8 @@
 const gridContainer = document.querySelector('.grid-container');
 
 // Function to create Grid
-function createGrid (size) {
-
-    const totalSquares = size*size;
+function createGrid(size) {
+    const totalSquares = size * size;
 
     // Clear the container before creating a new grid
     gridContainer.innerHTML = '';
@@ -13,27 +12,34 @@ function createGrid (size) {
     gridContainer.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     gridContainer.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-     // Step 3: Create the squares
-     for (let i = 0; i < totalSquares; i++) {
+    // Create the squares
+    for (let i = 0; i < totalSquares; i++) {
         const square = document.createElement('div');
         square.classList.add('grid-square');
+        square.setAttribute('data-opacity', '0'); // Initialize opacity
         gridContainer.appendChild(square);
     }
 }
 
-// Function to add hover effect
-function addHoverEffect() {
+// Function to add hover effect for progressive darkening
+function addDarkenHoverEffect() {
     const squares = document.querySelectorAll('.grid-square');
     squares.forEach((square) => {
         square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = 'black'; // Change color on hover
+            // Get current opacity level
+            let currentOpacity = parseFloat(square.getAttribute('data-opacity'));
+
+            // Increment opacity by 0.1 (10%)
+            if (currentOpacity < 1) {
+                currentOpacity += 0.1;
+                square.setAttribute('data-opacity', currentOpacity.toFixed(1));
+
+                // Apply new opacity to the background color
+                square.style.backgroundColor = `rgba(255, 0, 0, ${currentOpacity})`; // Red with varying opacity
+            }
         });
     });
 }
-
-// Call the hover function after creating the grid
-createGrid(12); // Initialize the grid
-addHoverEffect(); // Add hover functionality
 
 // Select the clear button
 const clearButton = document.querySelector('#clear-btn');
@@ -44,14 +50,19 @@ clearButton.addEventListener('click', () => {
     const squares = document.querySelectorAll('.grid-square');
     squares.forEach((square) => {
         square.style.backgroundColor = 'white'; // Reset color
+        square.setAttribute('data-opacity', '0'); // Reset opacity
     });
 
     // Optional: Ask for a new grid size
     let newSize = parseInt(prompt('Enter new grid size (e.g., 16 for 16x16):'));
     if (newSize && newSize > 0 && newSize <= 100) { // Limit grid size for performance
         createGrid(newSize); // Create new grid
-        addHoverEffect(); // Reapply hover effect
+        addDarkenHoverEffect(); // Reapply hover effect
     } else {
         alert('Invalid size. Please enter a number between 1 and 100.');
     }
 });
+
+// Initialize the grid with default size and hover effect
+createGrid(22);
+addDarkenHoverEffect();

@@ -9,26 +9,27 @@ This project is a browser-based version of an Etch-A-Sketch done for "The Odin P
   - The grid size is customizable.
 - **Hover Effects:**
   - Grid squares change color upon hover.
-  - Implemented progressive color darkening (planned enhancement).
+  - Progressive darkening: Each interaction darkens the square by 10%, achieving full color in 10 interactions.
 - **Reset Functionality:**
-  - A button to clear the grid and optionally set a new grid size.
+  - A button to reset the grid, now labeled "RESET" with a cream-yellow design.
+  - Optionally allows the user to set a new grid size.
 
 ### Technology Stack
 - **HTML:** Used for the basic structure of the webpage.
-- **CSS:** Styled the grid container and squares using Flexbox.
+- **CSS:** Styled the grid container, button, and squares using Flexbox.
 - **JavaScript:**
   - Dynamically creates the grid.
-  - Adds interactive hover effects and reset functionality.
+  - Adds hover effects, reset functionality, and interactive design.
 
 ### How to Use
 1. Clone this repository to your local machine.
 2. Open `index.html` in your browser to run the application.
 3. Interact with the grid by hovering over squares.
-4. Use the "Clear Grid" button to reset the grid or set a new size.
+4. Use the "RESET" button to clear the grid or set a new size.
 
 ### Planned Features
-- Gradual darkening of grid squares on repeated hovers.
-- Customizable grid colors and additional interactivity.
+- Customizable grid colors.
+- Additional interactive modes, such as random colors or erasers.
 
 ---
 

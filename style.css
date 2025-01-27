@@ -1,35 +1,52 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     display: flex;
-    border: 2px solid black;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
     min-height: 100vh;
+    margin: 0;
     background-color: #f0f0f0;
+}
+
+.heading {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
 }
 
-/* Grid Container */
 .grid-container {
-    display: grid; /* Switch to grid for better control */
-    width: 500px; /* Fixed width for grid */
-    height: 500px; /* Fixed height for grid */
-    border: 2px solid #333;
+    display: grid;
+    width: 500px;
+    height: 500px;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
     background-color: white;
-
-    grid-template-columns: repeat(5, 1fr); /* Adjust dynamically based on grid size */
-    grid-template-rows: repeat(5, 1fr);
+    border: 2px solid #333;
 }
 
-/* Grid Squares */
 .grid-square {
-    border: 1px solid #ddd;
-    width: 100%; /* Ensure the square fills the cell */
-    height: 100%; /* Maintain square aspect ratio */
+    border: 1px solid #ddd; /* Add borders to create grid lines */
+    box-sizing: border-box; /* Prevent borders from affecting size */
+}
+
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#clear-btn {
+    background-color: #f7e6a3; /* Cream yellow color */
+    color: black; /* Black text */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#clear-btn:hover {
+    background-color: #eedc82; /* Slightly darker yellow on hover */
 }
